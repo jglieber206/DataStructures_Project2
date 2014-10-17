@@ -56,39 +56,6 @@ public class eBookSort {
 		}
 	}
 
-/*		String quicksort and partition
-	public static void QuickSortString(ArrayList<Storage> arr, String left, String right) {
-	      String index = partitionString(arr, left, right);
-	      if (left.compareTo(index) > 0)
-	            QuickSortString(arr, left, index);
-	      if (index.compareTo(right) > 0)
-	            QuickSortString(arr, index, right);
-	}
-	
-	public static String partitionString(ArrayList<Storage> arr, String left, String right)
-	{
-		String i = left, j = right;
-//	      int i = left, j = right;
-	       tmp;
-	      int pivot = (arr.get(left) + arr.get(right)) / 2;
-	     
-	      while (i <= j) {
-	            while (arr.get(i) < pivot)
-	                  i++;
-	            while (arr.get(j) > pivot)
-	                  j--;
-	            if (i <= j) {
-	                  tmp = arr.get(i);
-	                  arr.set(i, arr.get(j));
-	                  arr.set(j, tmp);
-	                  i++;
-	                  j--;
-	            }
-	      };
-	     
-	      return i;
-	}
-*/
 	/*
 	 * Sorts the strings in storage
 	 */
@@ -106,20 +73,6 @@ public class eBookSort {
 
 
 	private static void qsort(int from, int to){
-
-//	    String pivot = stringList.get(from);
-//	    int i = from - 1;
-//	    int j = to + 1;
-//
-//	    while(i<j){
-//
-//	        i++; while(stringList.get(i).compareTo(pivot) < 0) i++;
-//	        j--; while(stringList.get(j).compareTo(pivot) < 0) j--;
-//	        if(i<j) swap(i,j);
-//
-//	    }
-//
-//	    return j;
 		int i = from;
 		int j = to;
 		String pivot = stringList.get((int)((from+(to - from))/2));
@@ -149,7 +102,6 @@ public class eBookSort {
 		{
 			qsort(i, to);
 		}
-//		return i;
 	}
 	private static void swap (int i, int j){
 
