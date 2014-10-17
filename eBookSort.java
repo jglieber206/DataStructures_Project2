@@ -100,36 +100,56 @@ public class eBookSort {
 	}
 
 	public static void sort(ArrayList<String> namelist, int i, int j){
-		
-	    sort(0, namelist.size()-1);
+		qsort(0, namelist.size()-1);
 	    
 	}
 
-	public static void sort(int from, int to){
 
-	    if (from >= to)
-	        return;
-	    int p = partition(from, to);
-	    sort(from, p);
-	    sort( p + 1, to);
-//	    System.out.println("sort function");
-	}
+	private static void qsort(int from, int to){
 
-	private static int partition(int from, int to){
-
-	    String pivot = stringList.get(from);
-	    int i = from - 1;
-	    int j = to + 1;
-
-	    while(i<j){
-
-	        i++; while(stringList.get(i).compareTo(pivot) < 0) i++;
-	        j--; while(stringList.get(j).compareTo(pivot) < 0) j--;
-	        if(i<j) swap(i,j);
-
-	    }
-
-	    return j;
+//	    String pivot = stringList.get(from);
+//	    int i = from - 1;
+//	    int j = to + 1;
+//
+//	    while(i<j){
+//
+//	        i++; while(stringList.get(i).compareTo(pivot) < 0) i++;
+//	        j--; while(stringList.get(j).compareTo(pivot) < 0) j--;
+//	        if(i<j) swap(i,j);
+//
+//	    }
+//
+//	    return j;
+		int i = from;
+		int j = to;
+		String pivot = stringList.get((int)((from+(to - from))/2));
+		
+		while(i <= j)
+		{
+			while(stringList.get(i).compareTo(pivot) > 0)
+			{
+				i++;
+			}
+			while(stringList.get(j).compareTo(pivot) < 0)
+			{
+				j--;
+			}
+			if(i <= j)
+			{
+				swap(i, j);
+				i++;
+				j--;
+			}
+		}
+		if(from < j)
+		{
+			qsort(from, j);
+		}
+		if(i < to)
+		{
+			qsort(i, to);
+		}
+//		return i;
 	}
 	private static void swap (int i, int j){
 
@@ -139,17 +159,6 @@ public class eBookSort {
 	    stringList.set(j, temp);
 
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	public static void QuickSort(ArrayList<Integer> arr, int left, int right) {
 	      int index = partition(arr, left, right);
