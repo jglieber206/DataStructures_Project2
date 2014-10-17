@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner ;
 public class eBookSort {
-	public static ArrayList<String> stringList = new ArrayList<String>();
 	public static void main(String[] args) {
 		String file = "input.txt";
 		Scanner inputStream = null ;
@@ -24,7 +23,7 @@ public class eBookSort {
 		while(inputStream.hasNextLine()) {
 			
 			String aLine = inputStream.nextLine();
-			String[] strArray = aLine.split(" ");
+			String[] strArray = aLine.split("\t");
 //			System.out.println("first " + strArray[0]);
 //			System.out.println("array length" + strArray.length);
 			if(strArray.length == 2)
@@ -50,7 +49,6 @@ public class eBookSort {
 		{
 			System.out.println(str.get(m));
 		}
-//		QuickSort(index,0,index.size() - 1 ) ;
 		for (int k = 0; k < index.size() ; k ++) {
 //			System.out.println(index.get(k)) ;
 		}
@@ -61,54 +59,55 @@ public class eBookSort {
 	 */
 	public static void QuickSortS(ArrayList<String> initialValue){
 
-	    stringList=initialValue;
-	    sort(stringList, 1, stringList.size()-1);
+//	    stringList=initialValue;
+	    sort(initialValue, 1, initialValue.size()-1);
 //	    System.out.println("debug");
 	}
 
 	public static void sort(ArrayList<String> namelist, int i, int j){
-		qsort(0, namelist.size()-1);
+		qsort(namelist, 0, namelist.size()-1);
 	    
 	}
 
 
-	private static void qsort(int from, int to){
+	private static void qsort(ArrayList<String> aList, int from, int to){
 		int i = from;
 		int j = to;
-		String pivot = stringList.get((int)((from+(to - from))/2));
+		int index = from + (to - from) / 2;
+		String pivot = aList.get(index);
 		
 		while(i <= j)
 		{
-			while(stringList.get(i).compareTo(pivot) > 0)
+			while(aList.get(i).compareTo(pivot) < 0)
 			{
 				i++;
 			}
-			while(stringList.get(j).compareTo(pivot) < 0)
+			while(aList.get(j).compareTo(pivot) > 0)
 			{
 				j--;
 			}
 			if(i <= j)
 			{
-				swap(i, j);
+				swap(aList, i, j);
 				i++;
 				j--;
 			}
 		}
 		if(from < j)
 		{
-			qsort(from, j);
+			qsort(aList, from, j);
 		}
 		if(i < to)
 		{
-			qsort(i, to);
+			qsort(aList, i, to);
 		}
 	}
-	private static void swap (int i, int j){
+	private static void swap (ArrayList<String> aList, int i, int j){
 
-	    String temp = stringList.get(i);
+	    String temp = aList.get(i);
 
-	    stringList.set(i, stringList.get(j));
-	    stringList.set(j, temp);
+	    aList.set(i, aList.get(j));
+	    aList.set(j, temp);
 
 	}
 	
