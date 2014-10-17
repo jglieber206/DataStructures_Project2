@@ -41,7 +41,7 @@ public class eBookSort {
 		inputStream.close() ;
 		for(int m = 0; m < list.size() ; m++)
 		{
-//			System.out.println(list.get(m).getString());
+			System.out.println(list.get(m).getString());
 			str.add(list.get(m).getString());
 		}
 		System.out.println("length is "+str.size());
@@ -95,24 +95,27 @@ public class eBookSort {
 	public static void QuickSortS(ArrayList<String> initialValue){
 
 	    stringList=initialValue;
-	    System.out.println("debug");
+	    sort(stringList, 1, stringList.size()-1);
+//	    System.out.println("debug");
 	}
 
-	public void sort(ArrayList<String> namelist, int i, int j){
-
-	    sort(0, stringList.size()-1);
+	public static void sort(ArrayList<String> namelist, int i, int j){
+		
+	    sort(0, namelist.size()-1);
+	    
 	}
 
-	public void sort(int from, int to){
+	public static void sort(int from, int to){
 
 	    if (from >= to)
 	        return;
 	    int p = partition(from, to);
 	    sort(from, p);
 	    sort( p + 1, to);
+//	    System.out.println("sort function");
 	}
 
-	private int partition(int from, int to){
+	private static int partition(int from, int to){
 
 	    String pivot = stringList.get(from);
 	    int i = from - 1;
@@ -128,11 +131,12 @@ public class eBookSort {
 
 	    return j;
 	}
-	private void swap (int i, int j){
+	private static void swap (int i, int j){
 
 	    String temp = stringList.get(i);
-	    stringList.get(j).equals(stringList.get(i));
-	    stringList.get(j).equals(temp);
+
+	    stringList.set(i, stringList.get(j));
+	    stringList.set(j, temp);
 
 	}
 
